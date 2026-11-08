@@ -1,0 +1,17 @@
+# synth/synth.ys -- generic (technology-independent) synthesis of systolic_row
+# Run from the project root (synth/run_synth.sh does this).
+
+read_verilog rtl/mac_pe.v rtl/systolic_row.v
+hierarchy -check -top systolic_row
+synth -flatten -top systolic_row
+
+# Statistics, logic-loop detection, structural checks
+tee -o synth/out/stat.txt  stat
+tee -o synth/out/scc.txt   scc
+tee -o synth/out/check.txt check -assert
+
+# Hard fail if any latch / SR cell exists (fine-grained and coarse types)
+select -assert-none t:$_DLATCH_* t:$_DLATCHSR_* t:$_SR_* t:$dlatch t:$adlatch t:$dlatchsr t:$sr
+
+write_json            synth/out/systolic_row_synth.json
+write_verilog -noattr synth/out/systolic_row_synth.v

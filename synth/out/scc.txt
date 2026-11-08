@@ -1,0 +1,3 @@
+6. Executing SCC pass (detecting logic loops).
+Found 0 SCCs in module systolic_row.
+Found 0 SCCs.

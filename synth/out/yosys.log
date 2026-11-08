@@ -1,0 +1,1121 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.70+360 (git sha1 5e740962d, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+
+-- Executing script file `synth/synth.ys' --
+
+1. Executing Verilog-2005 frontend: rtl/mac_pe.v
+Parsing Verilog input from `rtl/mac_pe.v' to AST representation.
+Generating RTLIL representation for module `\mac_pe'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: rtl/systolic_row.v
+Parsing Verilog input from `rtl/systolic_row.v' to AST representation.
+Generating RTLIL representation for module `\systolic_row'.
+Successfully finished Verilog frontend.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1. Analyzing design hierarchy..
+Top module:  \systolic_row
+Used module:     \mac_pe
+Parameter \DATA_W = 8
+Parameter \ACC_W = 24
+
+3.2. Executing AST frontend in derive mode using pre-parsed AST for module `\mac_pe'.
+Parameter \DATA_W = 8
+Parameter \ACC_W = 24
+Generating RTLIL representation for module `$paramod$fefa46cc4a8b9d9665b7f2e9c5ea083f65fa2e63\mac_pe'.
+Parameter \DATA_W = 8
+Parameter \ACC_W = 24
+Found cached RTLIL representation for module `$paramod$fefa46cc4a8b9d9665b7f2e9c5ea083f65fa2e63\mac_pe'.
+Parameter \DATA_W = 8
+Parameter \ACC_W = 24
+Found cached RTLIL representation for module `$paramod$fefa46cc4a8b9d9665b7f2e9c5ea083f65fa2e63\mac_pe'.
+Parameter \DATA_W = 8
+Parameter \ACC_W = 24
+Found cached RTLIL representation for module `$paramod$fefa46cc4a8b9d9665b7f2e9c5ea083f65fa2e63\mac_pe'.
+
+3.3. Analyzing design hierarchy..
+Top module:  \systolic_row
+Used module:     $paramod$fefa46cc4a8b9d9665b7f2e9c5ea083f65fa2e63\mac_pe
+
+3.4. Analyzing design hierarchy..
+Top module:  \systolic_row
+Used module:     $paramod$fefa46cc4a8b9d9665b7f2e9c5ea083f65fa2e63\mac_pe
+Removing unused module `\mac_pe'.
+Removed 1 unused modules.
+
+4. Executing SYNTH pass.
+
+4.1. Executing HIERARCHY pass (managing design hierarchy).
+
+4.1.1. Analyzing design hierarchy..
+Top module:  \systolic_row
+Used module:     $paramod$fefa46cc4a8b9d9665b7f2e9c5ea083f65fa2e63\mac_pe
+
+4.1.2. Analyzing design hierarchy..
+Top module:  \systolic_row
+Used module:     $paramod$fefa46cc4a8b9d9665b7f2e9c5ea083f65fa2e63\mac_pe
+Removed 0 unused modules.
+
+4.2. Executing PROC pass (convert processes to netlists).
+
+4.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+4.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $rtl/systolic_row.v:113$proc$15 in module systolic_row.
+Marked 1 switch rules as full_case in process $rtl/systolic_row.v:100$proc$13 in module systolic_row.
+Marked 1 switch rules as full_case in process $rtl/systolic_row.v:47$proc$7 in module systolic_row.
+Marked 1 switch rules as full_case in process $rtl/mac_pe.v:46$proc$28 in module $paramod$fefa46cc4a8b9d9665b7f2e9c5ea083f65fa2e63\mac_pe.
+Marked 1 switch rules as full_case in process $rtl/mac_pe.v:38$proc$26 in module $paramod$fefa46cc4a8b9d9665b7f2e9c5ea083f65fa2e63\mac_pe.
+Removed a total of 0 dead cases.
+
+4.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 6 redundant assignments.
+Promoted 0 assignments to connections.
+
+4.2.4. Executing PROC_INIT pass (extract init attributes).
+
+4.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\systolic_row.$rtl/systolic_row.v:113$proc$15'.
+Found async reset \rst_n in `\systolic_row.$rtl/systolic_row.v:100$proc$13'.
+Found async reset \rst_n in `\systolic_row.$rtl/systolic_row.v:47$proc$7'.
+Found async reset \rst_n in `$paramod$fefa46cc4a8b9d9665b7f2e9c5ea083f65fa2e63\mac_pe.$rtl/mac_pe.v:46$proc$28'.
+Found async reset \rst_n in `$paramod$fefa46cc4a8b9d9665b7f2e9c5ea083f65fa2e63\mac_pe.$rtl/mac_pe.v:38$proc$26'.
+
+4.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~3 debug messages>
+
+4.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\systolic_row.$rtl/systolic_row.v:113$proc$15'.
+     1/2: $0\done[0:0]
+     2/2: $0\y_out[23:0]
+Creating decoders for process `\systolic_row.$rtl/systolic_row.v:100$proc$13'.
+     1/2: $0\vld_sr[7:0]
+     2/2: $0\x_valid_d[0:0]
+Creating decoders for process `\systolic_row.$rtl/systolic_row.v:47$proc$7'.
+     1/1: $0\w_cnt[1:0]
+Creating decoders for process `$paramod$fefa46cc4a8b9d9665b7f2e9c5ea083f65fa2e63\mac_pe.$rtl/mac_pe.v:46$proc$28'.
+     1/3: $0\psum_out[23:0]
+     2/3: $0\psum_mid[23:0]
+     3/3: $0\x_out[7:0]
+Creating decoders for process `$paramod$fefa46cc4a8b9d9665b7f2e9c5ea083f65fa2e63\mac_pe.$rtl/mac_pe.v:38$proc$26'.
+     1/1: $0\w_reg[7:0]
+
+4.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+4.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\systolic_row.\y_out' using process `\systolic_row.$rtl/systolic_row.v:113$proc$15'.
+  created $adff cell `$procdff$41' with positive edge clock and positive level reset.
+Creating register for signal `\systolic_row.\done' using process `\systolic_row.$rtl/systolic_row.v:113$proc$15'.
+  created $adff cell `$procdff$46' with positive edge clock and positive level reset.
+Creating register for signal `\systolic_row.\x_valid_d' using process `\systolic_row.$rtl/systolic_row.v:100$proc$13'.
+  created $adff cell `$procdff$51' with positive edge clock and positive level reset.
+Creating register for signal `\systolic_row.\vld_sr' using process `\systolic_row.$rtl/systolic_row.v:100$proc$13'.
+  created $adff cell `$procdff$56' with positive edge clock and positive level reset.
+Creating register for signal `\systolic_row.\w_cnt' using process `\systolic_row.$rtl/systolic_row.v:47$proc$7'.
+  created $adff cell `$procdff$61' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$fefa46cc4a8b9d9665b7f2e9c5ea083f65fa2e63\mac_pe.\x_out' using process `$paramod$fefa46cc4a8b9d9665b7f2e9c5ea083f65fa2e63\mac_pe.$rtl/mac_pe.v:46$proc$28'.
+  created $adff cell `$procdff$66' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$fefa46cc4a8b9d9665b7f2e9c5ea083f65fa2e63\mac_pe.\psum_out' using process `$paramod$fefa46cc4a8b9d9665b7f2e9c5ea083f65fa2e63\mac_pe.$rtl/mac_pe.v:46$proc$28'.
+  created $adff cell `$procdff$71' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$fefa46cc4a8b9d9665b7f2e9c5ea083f65fa2e63\mac_pe.\psum_mid' using process `$paramod$fefa46cc4a8b9d9665b7f2e9c5ea083f65fa2e63\mac_pe.$rtl/mac_pe.v:46$proc$28'.
+  created $adff cell `$procdff$76' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$fefa46cc4a8b9d9665b7f2e9c5ea083f65fa2e63\mac_pe.\w_reg' using process `$paramod$fefa46cc4a8b9d9665b7f2e9c5ea083f65fa2e63\mac_pe.$rtl/mac_pe.v:38$proc$26'.
+  created $adff cell `$procdff$81' with positive edge clock and positive level reset.
+
+4.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+4.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\systolic_row.$rtl/systolic_row.v:113$proc$15'.
+Removing empty process `systolic_row.$rtl/systolic_row.v:113$proc$15'.
+Removing empty process `systolic_row.$rtl/systolic_row.v:100$proc$13'.
+Found and cleaned up 1 empty switch in `\systolic_row.$rtl/systolic_row.v:47$proc$7'.
+Removing empty process `systolic_row.$rtl/systolic_row.v:47$proc$7'.
+Removing empty process `$paramod$fefa46cc4a8b9d9665b7f2e9c5ea083f65fa2e63\mac_pe.$rtl/mac_pe.v:46$proc$28'.
+Found and cleaned up 1 empty switch in `$paramod$fefa46cc4a8b9d9665b7f2e9c5ea083f65fa2e63\mac_pe.$rtl/mac_pe.v:38$proc$26'.
+Removing empty process `$paramod$fefa46cc4a8b9d9665b7f2e9c5ea083f65fa2e63\mac_pe.$rtl/mac_pe.v:38$proc$26'.
+Cleaned up 3 empty switches.
+
+4.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module systolic_row.
+<suppressed ~11 debug messages>
+Optimizing module $paramod$fefa46cc4a8b9d9665b7f2e9c5ea083f65fa2e63\mac_pe.
+<suppressed ~8 debug messages>
+
+4.3. Executing CHECK pass (checking for obvious problems).
+Checking module systolic_row...
+Checking module $paramod$fefa46cc4a8b9d9665b7f2e9c5ea083f65fa2e63\mac_pe...
+Found and reported 0 problems.
+
+4.4. Executing FLATTEN pass (flatten design).
+Deleting now unused module $paramod$fefa46cc4a8b9d9665b7f2e9c5ea083f65fa2e63\mac_pe.
+<suppressed ~4 debug messages>
+
+4.5. Executing OPT_EXPR pass (perform const folding).
+Optimizing module systolic_row.
+<suppressed ~1 debug messages>
+
+4.6. Executing CHECK pass (checking for obvious problems).
+Checking module systolic_row...
+Found and reported 0 problems.
+
+4.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \systolic_row..
+Removed 33 unused cells and 92 unused wires.
+<suppressed ~36 debug messages>
+
+4.8. Executing OPT pass (performing simple optimizations).
+
+4.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module systolic_row.
+
+4.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\systolic_row'.
+Computing hashes of 49 cells of `\systolic_row'.
+Finding duplicate cells in `\systolic_row'.
+Removed a total of 0 cells.
+
+4.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \systolic_row..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~14 debug messages>
+
+4.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \systolic_row.
+Performed a total of 0 changes.
+
+4.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\systolic_row'.
+Computing hashes of 49 cells of `\systolic_row'.
+Finding duplicate cells in `\systolic_row'.
+Removed a total of 0 cells.
+
+4.8.6. Executing OPT_DFF pass (perform DFF optimizations).
+Setting constant 0-bit at position 16 on $flatten\g_pe[0].u_pe.$procdff$76 ($adff) from module systolic_row.
+Setting constant 0-bit at position 17 on $flatten\g_pe[0].u_pe.$procdff$76 ($adff) from module systolic_row.
+Setting constant 0-bit at position 18 on $flatten\g_pe[0].u_pe.$procdff$76 ($adff) from module systolic_row.
+Setting constant 0-bit at position 19 on $flatten\g_pe[0].u_pe.$procdff$76 ($adff) from module systolic_row.
+Setting constant 0-bit at position 20 on $flatten\g_pe[0].u_pe.$procdff$76 ($adff) from module systolic_row.
+Setting constant 0-bit at position 21 on $flatten\g_pe[0].u_pe.$procdff$76 ($adff) from module systolic_row.
+Setting constant 0-bit at position 22 on $flatten\g_pe[0].u_pe.$procdff$76 ($adff) from module systolic_row.
+Setting constant 0-bit at position 23 on $flatten\g_pe[0].u_pe.$procdff$76 ($adff) from module systolic_row.
+
+4.8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \systolic_row..
+
+4.8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module systolic_row.
+
+4.8.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.8.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \systolic_row..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~14 debug messages>
+
+4.8.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \systolic_row.
+Performed a total of 0 changes.
+
+4.8.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\systolic_row'.
+Computing hashes of 49 cells of `\systolic_row'.
+Finding duplicate cells in `\systolic_row'.
+Removed a total of 0 cells.
+
+4.8.13. Executing OPT_DFF pass (perform DFF optimizations).
+Setting constant 0-bit at position 16 on $flatten\g_pe[0].u_pe.$procdff$71 ($adff) from module systolic_row.
+Setting constant 0-bit at position 17 on $flatten\g_pe[0].u_pe.$procdff$71 ($adff) from module systolic_row.
+Setting constant 0-bit at position 18 on $flatten\g_pe[0].u_pe.$procdff$71 ($adff) from module systolic_row.
+Setting constant 0-bit at position 19 on $flatten\g_pe[0].u_pe.$procdff$71 ($adff) from module systolic_row.
+Setting constant 0-bit at position 20 on $flatten\g_pe[0].u_pe.$procdff$71 ($adff) from module systolic_row.
+Setting constant 0-bit at position 21 on $flatten\g_pe[0].u_pe.$procdff$71 ($adff) from module systolic_row.
+Setting constant 0-bit at position 22 on $flatten\g_pe[0].u_pe.$procdff$71 ($adff) from module systolic_row.
+Setting constant 0-bit at position 23 on $flatten\g_pe[0].u_pe.$procdff$71 ($adff) from module systolic_row.
+
+4.8.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \systolic_row..
+
+4.8.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module systolic_row.
+
+4.8.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.8.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \systolic_row..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~14 debug messages>
+
+4.8.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \systolic_row.
+Performed a total of 0 changes.
+
+4.8.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\systolic_row'.
+Computing hashes of 49 cells of `\systolic_row'.
+Finding duplicate cells in `\systolic_row'.
+Removed a total of 0 cells.
+
+4.8.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.8.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \systolic_row..
+
+4.8.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module systolic_row.
+
+4.8.23. Finished fast OPT passes. (There is nothing left to do.)
+
+4.9. Executing FSM pass (extract and optimize FSM).
+
+4.9.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+4.9.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+4.9.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+4.9.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \systolic_row..
+
+4.9.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+4.9.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+4.9.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+4.9.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+4.10. Executing OPT pass (performing simple optimizations).
+
+4.10.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module systolic_row.
+
+4.10.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\systolic_row'.
+Computing hashes of 49 cells of `\systolic_row'.
+Finding duplicate cells in `\systolic_row'.
+Removed a total of 0 cells.
+
+4.10.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \systolic_row..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~14 debug messages>
+
+4.10.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \systolic_row.
+Performed a total of 0 changes.
+
+4.10.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\systolic_row'.
+Computing hashes of 49 cells of `\systolic_row'.
+Finding duplicate cells in `\systolic_row'.
+Removed a total of 0 cells.
+
+4.10.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$61 ($adff) from module systolic_row (D = $rtl/systolic_row.v:51$add$9_Y, Q = \w_cnt).
+Adding EN signal on $procdff$41 ($adff) from module systolic_row (D = \g_pe[3].u_pe.psum_out, Q = \y_out).
+Adding EN signal on $flatten\g_pe[3].u_pe.$procdff$81 ($adff) from module systolic_row (D = \w_in, Q = \g_pe[3].u_pe.w_reg).
+Adding EN signal on $flatten\g_pe[1].u_pe.$procdff$81 ($adff) from module systolic_row (D = \w_in, Q = \g_pe[1].u_pe.w_reg).
+Adding EN signal on $flatten\g_pe[2].u_pe.$procdff$81 ($adff) from module systolic_row (D = \w_in, Q = \g_pe[2].u_pe.w_reg).
+Adding EN signal on $flatten\g_pe[0].u_pe.$procdff$81 ($adff) from module systolic_row (D = \w_in, Q = \g_pe[0].u_pe.w_reg).
+
+4.10.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \systolic_row..
+Removed 6 unused cells and 6 unused wires.
+<suppressed ~7 debug messages>
+
+4.10.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module systolic_row.
+
+4.10.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.10.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \systolic_row..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~2 debug messages>
+
+4.10.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \systolic_row.
+Performed a total of 0 changes.
+
+4.10.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\systolic_row'.
+Computing hashes of 43 cells of `\systolic_row'.
+Finding duplicate cells in `\systolic_row'.
+Removed a total of 0 cells.
+
+4.10.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.10.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \systolic_row..
+
+4.10.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module systolic_row.
+
+4.10.16. Finished fast OPT passes. (There is nothing left to do.)
+
+4.11. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 2) from port B of cell systolic_row.$rtl/systolic_row.v:51$add$9 ($add).
+Removed top 1 bits (of 2) from port B of cell systolic_row.$rtl/systolic_row.v:73$eq$19 ($eq).
+Removed top 8 bits (of 24) from port A of cell systolic_row.$flatten\g_pe[1].u_pe.$rtl/mac_pe.v:53$add$30 ($add).
+Removed top 7 bits (of 24) from port Y of cell systolic_row.$flatten\g_pe[1].u_pe.$rtl/mac_pe.v:53$add$30 ($add).
+Removed top 7 bits (of 24) from FF cell systolic_row.$flatten\g_pe[1].u_pe.$procdff$76 ($adff).
+Removed top 7 bits (of 24) from FF cell systolic_row.$flatten\g_pe[1].u_pe.$procdff$71 ($adff).
+Removed top 7 bits (of 24) from port A of cell systolic_row.$flatten\g_pe[2].u_pe.$rtl/mac_pe.v:53$add$30 ($add).
+Removed top 6 bits (of 24) from port Y of cell systolic_row.$flatten\g_pe[2].u_pe.$rtl/mac_pe.v:53$add$30 ($add).
+Removed top 7 bits (of 24) from wire systolic_row.$flatten\g_pe[1].u_pe.$0\psum_mid[23:0].
+Removed top 6 bits (of 24) from wire systolic_row.$flatten\g_pe[2].u_pe.$0\psum_mid[23:0].
+Removed top 8 bits (of 40) from wire systolic_row.x_bus.
+
+4.12. Executing PEEPOPT pass (run peephole optimizers).
+
+4.13. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \systolic_row..
+Removed 0 unused cells and 3 unused wires.
+<suppressed ~1 debug messages>
+
+4.14. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module systolic_row:
+  creating $macc model for $flatten\g_pe[1].u_pe.$rtl/mac_pe.v:53$add$30 ($add).
+  creating $macc model for $flatten\g_pe[3].u_pe.$rtl/mac_pe.v:35$mul$25 ($mul).
+  creating $macc model for $flatten\g_pe[2].u_pe.$rtl/mac_pe.v:35$mul$25 ($mul).
+  creating $macc model for $flatten\g_pe[1].u_pe.$rtl/mac_pe.v:35$mul$25 ($mul).
+  creating $macc model for $flatten\g_pe[0].u_pe.$rtl/mac_pe.v:35$mul$25 ($mul).
+  creating $macc model for $flatten\g_pe[3].u_pe.$rtl/mac_pe.v:53$add$30 ($add).
+  creating $macc model for $flatten\g_pe[2].u_pe.$rtl/mac_pe.v:53$add$30 ($add).
+  creating $macc model for $rtl/systolic_row.v:51$add$9 ($add).
+  merging $macc model for $flatten\g_pe[2].u_pe.$rtl/mac_pe.v:35$mul$25 into $flatten\g_pe[2].u_pe.$rtl/mac_pe.v:53$add$30.
+  merging $macc model for $flatten\g_pe[3].u_pe.$rtl/mac_pe.v:35$mul$25 into $flatten\g_pe[3].u_pe.$rtl/mac_pe.v:53$add$30.
+  merging $macc model for $flatten\g_pe[1].u_pe.$rtl/mac_pe.v:35$mul$25 into $flatten\g_pe[1].u_pe.$rtl/mac_pe.v:53$add$30.
+  creating $alu model for $macc $rtl/systolic_row.v:51$add$9.
+  creating $macc cell for $flatten\g_pe[0].u_pe.$rtl/mac_pe.v:35$mul$25: $auto$alumacc.cc:427:replace_macc$97
+  creating $macc cell for $flatten\g_pe[3].u_pe.$rtl/mac_pe.v:53$add$30: $auto$alumacc.cc:427:replace_macc$98
+  creating $macc cell for $flatten\g_pe[2].u_pe.$rtl/mac_pe.v:53$add$30: $auto$alumacc.cc:427:replace_macc$99
+  creating $macc cell for $flatten\g_pe[1].u_pe.$rtl/mac_pe.v:53$add$30: $auto$alumacc.cc:427:replace_macc$100
+  creating $alu cell for $rtl/systolic_row.v:51$add$9: $auto$alumacc.cc:578:replace_alu$101
+  created 1 $alu and 4 $macc cells.
+
+4.15. Executing SHARE pass (SAT-based resource sharing).
+Found 3 cells in module systolic_row that may be considered for resource sharing.
+  Analyzing resource sharing options for $flatten\g_pe[1].u_pe.$rtl/mac_pe.v:35$mul$25 ($mul):
+    Found cell that is never activated: $flatten\g_pe[1].u_pe.$rtl/mac_pe.v:35$mul$25
+    Cell is never active. Sharing is pointless, we simply remove it.
+  Analyzing resource sharing options for $flatten\g_pe[2].u_pe.$rtl/mac_pe.v:35$mul$25 ($mul):
+    Found cell that is never activated: $flatten\g_pe[2].u_pe.$rtl/mac_pe.v:35$mul$25
+    Cell is never active. Sharing is pointless, we simply remove it.
+  Analyzing resource sharing options for $flatten\g_pe[3].u_pe.$rtl/mac_pe.v:35$mul$25 ($mul):
+    Found cell that is never activated: $flatten\g_pe[3].u_pe.$rtl/mac_pe.v:35$mul$25
+    Cell is never active. Sharing is pointless, we simply remove it.
+Removing 3 cells in module systolic_row:
+  Removing cell $flatten\g_pe[3].u_pe.$rtl/mac_pe.v:35$mul$25 ($mul).
+  Removing cell $flatten\g_pe[2].u_pe.$rtl/mac_pe.v:35$mul$25 ($mul).
+  Removing cell $flatten\g_pe[1].u_pe.$rtl/mac_pe.v:35$mul$25 ($mul).
+
+4.16. Executing OPT pass (performing simple optimizations).
+
+4.16.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module systolic_row.
+
+4.16.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\systolic_row'.
+Computing hashes of 40 cells of `\systolic_row'.
+Finding duplicate cells in `\systolic_row'.
+Removed a total of 0 cells.
+
+4.16.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \systolic_row..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~2 debug messages>
+
+4.16.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \systolic_row.
+Performed a total of 0 changes.
+
+4.16.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\systolic_row'.
+Computing hashes of 40 cells of `\systolic_row'.
+Finding duplicate cells in `\systolic_row'.
+Removed a total of 0 cells.
+
+4.16.6. Executing OPT_DFF pass (perform DFF optimizations).
+Setting constant 0-bit at position 18 on $flatten\g_pe[2].u_pe.$procdff$76 ($adff) from module systolic_row.
+Setting constant 0-bit at position 19 on $flatten\g_pe[2].u_pe.$procdff$76 ($adff) from module systolic_row.
+Setting constant 0-bit at position 20 on $flatten\g_pe[2].u_pe.$procdff$76 ($adff) from module systolic_row.
+Setting constant 0-bit at position 21 on $flatten\g_pe[2].u_pe.$procdff$76 ($adff) from module systolic_row.
+Setting constant 0-bit at position 22 on $flatten\g_pe[2].u_pe.$procdff$76 ($adff) from module systolic_row.
+Setting constant 0-bit at position 23 on $flatten\g_pe[2].u_pe.$procdff$76 ($adff) from module systolic_row.
+
+4.16.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \systolic_row..
+
+4.16.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module systolic_row.
+
+4.16.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.16.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \systolic_row..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~2 debug messages>
+
+4.16.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \systolic_row.
+Performed a total of 0 changes.
+
+4.16.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\systolic_row'.
+Computing hashes of 40 cells of `\systolic_row'.
+Finding duplicate cells in `\systolic_row'.
+Removed a total of 0 cells.
+
+4.16.13. Executing OPT_DFF pass (perform DFF optimizations).
+Setting constant 0-bit at position 18 on $flatten\g_pe[2].u_pe.$procdff$71 ($adff) from module systolic_row.
+Setting constant 0-bit at position 19 on $flatten\g_pe[2].u_pe.$procdff$71 ($adff) from module systolic_row.
+Setting constant 0-bit at position 20 on $flatten\g_pe[2].u_pe.$procdff$71 ($adff) from module systolic_row.
+Setting constant 0-bit at position 21 on $flatten\g_pe[2].u_pe.$procdff$71 ($adff) from module systolic_row.
+Setting constant 0-bit at position 22 on $flatten\g_pe[2].u_pe.$procdff$71 ($adff) from module systolic_row.
+Setting constant 0-bit at position 23 on $flatten\g_pe[2].u_pe.$procdff$71 ($adff) from module systolic_row.
+
+4.16.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \systolic_row..
+
+4.16.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module systolic_row.
+
+4.16.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.16.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \systolic_row..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~2 debug messages>
+
+4.16.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \systolic_row.
+Performed a total of 0 changes.
+
+4.16.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\systolic_row'.
+Computing hashes of 40 cells of `\systolic_row'.
+Finding duplicate cells in `\systolic_row'.
+Removed a total of 0 cells.
+
+4.16.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.16.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \systolic_row..
+
+4.16.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module systolic_row.
+
+4.16.23. Finished fast OPT passes. (There is nothing left to do.)
+
+4.17. Executing MEMORY pass.
+
+4.17.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+4.17.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+4.17.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+4.17.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+4.17.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+4.17.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \systolic_row..
+
+4.17.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+4.17.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+4.17.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \systolic_row..
+
+4.17.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+4.18. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \systolic_row..
+
+4.19. Executing OPT pass (performing simple optimizations).
+
+4.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module systolic_row.
+
+4.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\systolic_row'.
+Computing hashes of 40 cells of `\systolic_row'.
+Finding duplicate cells in `\systolic_row'.
+Removed a total of 0 cells.
+
+4.19.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.19.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \systolic_row..
+
+4.19.5. Finished fast OPT passes.
+
+4.20. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+4.21. Executing OPT pass (performing simple optimizations).
+
+4.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module systolic_row.
+
+4.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\systolic_row'.
+Computing hashes of 40 cells of `\systolic_row'.
+Finding duplicate cells in `\systolic_row'.
+Removed a total of 0 cells.
+
+4.21.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \systolic_row..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~2 debug messages>
+
+4.21.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \systolic_row.
+Performed a total of 0 changes.
+
+4.21.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\systolic_row'.
+Computing hashes of 40 cells of `\systolic_row'.
+Finding duplicate cells in `\systolic_row'.
+Removed a total of 0 cells.
+
+4.21.6. Executing OPT_SHARE pass.
+
+4.21.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.21.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \systolic_row..
+
+4.21.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module systolic_row.
+
+4.21.10. Finished fast OPT passes. (There is nothing left to do.)
+
+4.22. Executing TECHMAP pass (map to technology primitives).
+
+4.22.1. Executing Verilog-2005 frontend: C:\oss-cad-suite\bin\../share/yosys/techmap.v
+Parsing Verilog input from `C:\oss-cad-suite\bin\../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+4.22.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $adff.
+Using extmapper simplemap for cells of type $adffe.
+Using extmapper maccmap for cells of type $macc_v2.
+  add \g_pe[0].u_pe.x_in * \g_pe[0].u_pe.w_reg (8x8 bits, unsigned)
+  add \g_pe[2].u_pe.x_out * \g_pe[3].u_pe.w_reg (8x8 bits, unsigned)
+  add { 6'000000 \g_pe[2].u_pe.psum_out [17:0] } (24 bits, unsigned)
+  add \g_pe[1].u_pe.x_out * \g_pe[2].u_pe.w_reg (8x8 bits, unsigned)
+  add \g_pe[1].u_pe.psum_out [16:0] (17 bits, unsigned)
+  add \g_pe[0].u_pe.x_out * \g_pe[1].u_pe.w_reg (8x8 bits, unsigned)
+  add \g_pe[0].u_pe.psum_out [15:0] (16 bits, unsigned)
+Using template $paramod$175e67c02b86e96b1288b9dc100122520d7240d8\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $logic_and.
+Using extmapper simplemap for cells of type $eq.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000010000 for cells of type $fa.
+Using template $paramod$6df0329addda9228fcc2546de2aaf14ad26c98e1\_90_alu for cells of type $alu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000011000 for cells of type $fa.
+Using template $paramod$e82d3fc1811c5751348a3964470632b35a435fc7\_90_alu for cells of type $alu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000010010 for cells of type $fa.
+Using template $paramod$12350b8c8422a70d10b7db4eaae1202a7148b784\_90_alu for cells of type $alu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000010001 for cells of type $fa.
+Using template $paramod$3bb72ad0665cdca279bbc49ed6a39f403f16497f\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000010 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000010 for cells of type $lcu.
+Using extmapper simplemap for cells of type $pos.
+Using extmapper simplemap for cells of type $or.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000010000 for cells of type $lcu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000011000 for cells of type $lcu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000010010 for cells of type $lcu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000010001 for cells of type $lcu.
+No more expansions possible.
+<suppressed ~1318 debug messages>
+
+4.23. Executing OPT pass (performing simple optimizations).
+
+4.23.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module systolic_row.
+<suppressed ~2303 debug messages>
+
+4.23.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\systolic_row'.
+Computing hashes of 2052 cells of `\systolic_row'.
+Finding duplicate cells in `\systolic_row'.
+Computing hashes of 2043 cells of `\systolic_row'.
+Finding duplicate cells in `\systolic_row'.
+Computing hashes of 2039 cells of `\systolic_row'.
+Finding duplicate cells in `\systolic_row'.
+Computing hashes of 2035 cells of `\systolic_row'.
+Finding duplicate cells in `\systolic_row'.
+<suppressed ~51 debug messages>
+Removed a total of 17 cells.
+
+4.23.3. Executing OPT_DFF pass (perform DFF optimizations).
+Setting constant 0-bit at position 0 on $auto$ff.cc:337:slice$557 ($_DFF_PN0_) from module systolic_row.
+
+4.23.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \systolic_row..
+Removed 75 unused cells and 566 unused wires.
+<suppressed ~76 debug messages>
+
+4.23.5. Rerunning OPT passes. (Removed registers in this run.)
+
+4.23.6. Executing OPT_EXPR pass (perform const folding).
+Optimizing module systolic_row.
+
+4.23.7. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\systolic_row'.
+Computing hashes of 1959 cells of `\systolic_row'.
+Finding duplicate cells in `\systolic_row'.
+Removed a total of 0 cells.
+
+4.23.8. Executing OPT_DFF pass (perform DFF optimizations).
+Setting constant 0-bit at position 0 on $auto$ff.cc:337:slice$533 ($_DFF_PN0_) from module systolic_row.
+
+4.23.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \systolic_row..
+
+4.23.10. Rerunning OPT passes. (Removed registers in this run.)
+
+4.23.11. Executing OPT_EXPR pass (perform const folding).
+Optimizing module systolic_row.
+
+4.23.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\systolic_row'.
+Computing hashes of 1958 cells of `\systolic_row'.
+Finding duplicate cells in `\systolic_row'.
+Removed a total of 0 cells.
+
+4.23.13. Executing OPT_DFF pass (perform DFF optimizations).
+Setting constant 0-bit at position 0 on $auto$ff.cc:337:slice$162 ($_DFFE_PN0P_) from module systolic_row.
+
+4.23.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \systolic_row..
+
+4.23.15. Rerunning OPT passes. (Removed registers in this run.)
+
+4.23.16. Executing OPT_EXPR pass (perform const folding).
+Optimizing module systolic_row.
+
+4.23.17. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\systolic_row'.
+Computing hashes of 1957 cells of `\systolic_row'.
+Finding duplicate cells in `\systolic_row'.
+Removed a total of 0 cells.
+
+4.23.18. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.23.19. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \systolic_row..
+
+4.23.20. Finished fast OPT passes.
+
+4.24. Executing ABC pass (technology mapping using ABC).
+
+4.24.1. Summary of detected clock domains:
+  4 cells in clk={ }, en={ }, arst={ }, srst={ }
+  8 cells in clk=\clk, en=\w_load, arst=!\rst_n, srst={ }
+  19 cells in clk=\clk, en=\vld_sr [7], arst=!\rst_n, srst={ }
+  68 cells in clk=\clk, en=\g_pe[3].u_pe.w_load, arst=!\rst_n, srst={ }
+  67 cells in clk=\clk, en=\g_pe[1].u_pe.w_load, arst=!\rst_n, srst={ }
+  66 cells in clk=\clk, en=\g_pe[2].u_pe.w_load, arst=!\rst_n, srst={ }
+  73 cells in clk=\clk, en=\g_pe[0].u_pe.w_load, arst=!\rst_n, srst={ }
+  1652 cells in clk=\clk, en={ }, arst=!\rst_n, srst={ }
+
+4.24.2. Extracting gate netlist of module `\systolic_row' to `<abc-temp-dir>/input.blif'..
+No matching clock domain found. Not extracting any FF cells.
+
+4.24.3. Extracting gate netlist of module `\systolic_row' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by \w_load, asynchronously reset by !\rst_n
+
+4.24.3.1. Executed ABC.
+Extracted 0 gates and 0 wires to a netlist network with 0 inputs and 0 outputs.
+Don't call ABC as there is nothing to map.
+Removing temp directory.
+
+4.24.4. Extracting gate netlist of module `\systolic_row' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by \vld_sr [7], asynchronously reset by !\rst_n
+
+4.24.5. Extracting gate netlist of module `\systolic_row' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by \g_pe[3].u_pe.w_load, asynchronously reset by !\rst_n
+
+4.24.6. Extracting gate netlist of module `\systolic_row' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by \g_pe[1].u_pe.w_load, asynchronously reset by !\rst_n
+
+4.24.7. Extracting gate netlist of module `\systolic_row' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by \g_pe[2].u_pe.w_load, asynchronously reset by !\rst_n
+
+4.24.8. Extracting gate netlist of module `\systolic_row' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, enabled by \g_pe[0].u_pe.w_load, asynchronously reset by !\rst_n
+
+4.24.9. Extracting gate netlist of module `\systolic_row' to `<abc-temp-dir>/input.blif'..
+Found matching posedge clock domain: \clk, asynchronously reset by !\rst_n
+
+4.24.9.1. Executed ABC.
+Extracted 6 gates and 8 wires to a netlist network with 2 inputs and 6 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+4.24.9.2. Re-integrating ABC results.
+ABC RESULTS:               NOT cells:        2
+ABC RESULTS:                OR cells:        1
+ABC RESULTS:             ORNOT cells:        2
+ABC RESULTS:               XOR cells:        1
+ABC RESULTS:        internal signals:        0
+ABC RESULTS:           input signals:        2
+ABC RESULTS:          output signals:        6
+Removing temp directory.
+
+4.24.9.1. Executed ABC.
+Extracted 0 gates and 0 wires to a netlist network with 0 inputs and 0 outputs.
+Don't call ABC as there is nothing to map.
+Removing temp directory.
+
+4.24.9.1. Executed ABC.
+Extracted 60 gates and 79 wires to a netlist network with 19 inputs and 58 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+4.24.9.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:       57
+ABC RESULTS:            ANDNOT cells:        2
+ABC RESULTS:        internal signals:        2
+ABC RESULTS:           input signals:       19
+ABC RESULTS:          output signals:       58
+Removing temp directory.
+
+4.24.9.1. Executed ABC.
+Extracted 59 gates and 77 wires to a netlist network with 18 inputs and 58 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+4.24.9.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:       57
+ABC RESULTS:            ANDNOT cells:        1
+ABC RESULTS:        internal signals:        1
+ABC RESULTS:           input signals:       18
+ABC RESULTS:          output signals:       58
+Removing temp directory.
+
+4.24.9.1. Executed ABC.
+Extracted 58 gates and 75 wires to a netlist network with 17 inputs and 57 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+4.24.9.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:       56
+ABC RESULTS:            ANDNOT cells:        1
+ABC RESULTS:        internal signals:        1
+ABC RESULTS:           input signals:       17
+ABC RESULTS:          output signals:       57
+Removing temp directory.
+
+4.24.9.1. Executed ABC.
+Extracted 65 gates and 83 wires to a netlist network with 18 inputs and 64 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+4.24.9.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:       63
+ABC RESULTS:            ANDNOT cells:        1
+ABC RESULTS:        internal signals:        1
+ABC RESULTS:           input signals:       18
+ABC RESULTS:          output signals:       64
+Removing temp directory.
+
+4.24.9.1. Executed ABC.
+Extracted 1478 gates and 1799 wires to a netlist network with 320 inputs and 79 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+4.24.9.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:      148
+ABC RESULTS:            ANDNOT cells:       31
+ABC RESULTS:               MUX cells:        3
+ABC RESULTS:              NAND cells:      554
+ABC RESULTS:               NOR cells:        8
+ABC RESULTS:               NOT cells:        3
+ABC RESULTS:                OR cells:       94
+ABC RESULTS:             ORNOT cells:        3
+ABC RESULTS:              XNOR cells:      171
+ABC RESULTS:               XOR cells:      369
+ABC RESULTS:        internal signals:     1400
+ABC RESULTS:           input signals:      320
+ABC RESULTS:          output signals:       79
+Removing temp directory.
+Removing global temp directory.
+
+4.25. Executing OPT pass (performing simple optimizations).
+
+4.25.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module systolic_row.
+
+4.25.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\systolic_row'.
+Computing hashes of 1859 cells of `\systolic_row'.
+Finding duplicate cells in `\systolic_row'.
+Removed a total of 0 cells.
+
+4.25.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.25.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \systolic_row..
+Removed 0 unused cells and 997 unused wires.
+<suppressed ~1 debug messages>
+
+4.25.5. Finished fast OPT passes.
+
+4.26. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `systolic_row'. Setting top module to systolic_row.
+
+4.26.1. Analyzing design hierarchy..
+Top module:  \systolic_row
+
+4.26.2. Analyzing design hierarchy..
+Top module:  \systolic_row
+Removed 0 unused modules.
+
+4.27. Printing statistics.
+
+=== systolic_row ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     1422 wires
+     2991 wire bits
+       60 public wires
+      729 public wire bits
+        8 ports
+       45 port bits
+     1859 cells
+       36   $_ANDNOT_
+      381   $_AND_
+       53   $_DFFE_PN0P_
+      174   $_DFF_PN0_
+        3   $_MUX_
+      554   $_NAND_
+        8   $_NOR_
+        5   $_NOT_
+        5   $_ORNOT_
+       95   $_OR_
+      171   $_XNOR_
+      370   $_XOR_
+        4   $scopeinfo
+
+4.28. Executing CHECK pass (checking for obvious problems).
+Checking module systolic_row...
+Found and reported 0 problems.
+
+5. Printing statistics.
+
+=== systolic_row ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     1422 wires
+     2991 wire bits
+       60 public wires
+      729 public wire bits
+        8 ports
+       45 port bits
+     1859 cells
+       36   $_ANDNOT_
+      381   $_AND_
+       53   $_DFFE_PN0P_
+      174   $_DFF_PN0_
+        3   $_MUX_
+      554   $_NAND_
+        8   $_NOR_
+        5   $_NOT_
+        5   $_ORNOT_
+       95   $_OR_
+      171   $_XNOR_
+      370   $_XOR_
+        4   $scopeinfo
+
+6. Executing SCC pass (detecting logic loops).
+Found 0 SCCs in module systolic_row.
+Found 0 SCCs.
+
+7. Executing CHECK pass (checking for obvious problems).
+Checking module systolic_row...
+Found and reported 0 problems.
+
+8. Executing JSON backend.
+
+9. Executing Verilog backend.
+
+9.1. Executing BMUXMAP pass.
+
+9.2. Executing DEMUXMAP pass.
+Dumping module `\systolic_row'.
+
+End of script. Logfile hash: 3adab18798
+Yosys 0.70+360 (git sha1 5e740962d, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 15.2.1)
+Time spent: 1% 31x opt_expr (0 sec), 1% 26x opt_clean (0 sec), ...
