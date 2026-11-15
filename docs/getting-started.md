@@ -251,9 +251,9 @@ run_synth.sh: yosys failed (see synth/out/yosys.log)
 
 本次在 Linux 的 2026-11-08 套件上做了对照：只把 `bin` 放进 `PATH`，不把 `lib` 放进 `PATH`，并且 `OSS_CAD` 指到一个不存在的目录，让脚本不要自己再改 `PATH`。`bash sim/run.sh` 仍然是 `ALL PASS`，退出码 0。该套件 Linux 版的 `bin/vvp` 是包装脚本，自己用 `lib/ld-linux` 指定库路径。因此「漏了 `lib` 就一定会段错误」不能写成这次 Linux 环境的结论。仓库脚本在找到 `$OSS_CAD/bin` 时仍会同时加上 `lib`。
 
-### 规格文首仍写着草案
+### 规格文首状态已订正
 
-[spec.md](spec.md) 开头是「草案，待确认（确认前不写 RTL）」。[rtl/systolic_row.v](../rtl/systolic_row.v) 和 [rtl/mac_pe.v](../rtl/mac_pe.v) 已经在仓库里。这是规格文件的状态句没有改。本次按文档范围，没有编辑 `spec.md`。
+[spec.md](spec.md) 开头原写「草案，待确认（确认前不写 RTL）」，现已订正为「已实现」。[rtl/systolic_row.v](../rtl/systolic_row.v) 和 [rtl/mac_pe.v](../rtl/mac_pe.v) 已经在仓库里，原状态句与现状不符。
 
 ## 7. 本次核对的边界
 
