@@ -1,6 +1,6 @@
 # 1×4 脉动阵列行（4 维内积）设计规格
 
-状态：**草案，待确认**（确认前不写 RTL）
+状态：**已实现**（RTL已按本规格入库，仿真与通用综合记录见`verification_report.md`与`synthesis_report.md`；本状态句原写「草案，待确认（确认前不写RTL）」，与现状不符，已订正）
 
 ## 1. 功能
 
@@ -100,6 +100,6 @@
 
 - **synth/**：yosys 通用综合（`synth -top`，不绑定工艺库），输出单元统计报告，确认没有锁存器、没有组合环。
 
-## 10. 待确认
+## 10. 已定事项
 
-- golden 期望值用 Python 脚本生成，还是直接手写在向量文件里？
+- golden期望值已定为用Python脚本生成：`golden/gen_golden.py`生成`golden/golden_cases.vh`，`sim/run.sh`每次运行先重新生成再编译仿真，不手写向量文件。
