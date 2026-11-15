@@ -26,7 +26,7 @@ x_in[7:0] ── x_valid=0 时改为 0 ──► PE0 ──► PE1 ──► PE2
                                    done：采到 x0 之后的第 8 拍，脉冲宽度 1 拍
 ```
 
-更细的结构、逐拍数据流和时序表在 [docs/design.md](docs/design.md)。拍级规格在 [docs/spec.md](docs/spec.md)。`docs/spec.md` 文首仍写着「草案，待确认（确认前不写 RTL）」；RTL 已经在仓库里，本次没有改规格文件。
+更细的结构、逐拍数据流和时序表在 [docs/design.md](docs/design.md)。拍级规格在 [docs/spec.md](docs/spec.md)。`docs/spec.md` 文首状态已订正为「已实现」：此前误写「草案，待确认（确认前不写 RTL）」，与 RTL 已经在仓库里的现状不符。
 
 ## 顶层接口
 
