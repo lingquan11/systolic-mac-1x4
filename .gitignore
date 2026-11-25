@@ -1,0 +1,11 @@
+# 仿真编译产物（由 sim/run.sh 重新生成；.vcd 波形按 README 说明保留入库）
+*.vvp
+
+# Python 缓存
+__pycache__/
+*.py[cod]
+
+# 编辑器 / 系统
+.DS_Store
+.vscode/
+.idea/
